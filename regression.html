@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>线性回归与梯度下降可视化</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">可见的智能</a>
+    <nav class="top-nav" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="kmeans.html">K-Means</a>
+      <a href="dbscan.html">DBSCAN</a>
+      <a href="knn.html">KNN</a>
+      <a href="bayes.html">朴素贝叶斯</a>
+      <a href="perceptron.html">感知机</a>
+      <a class="active" href="regression.html">线性回归</a>
+      <a href="https://github.com/HaoranWang-coder/visible-ai-lab" target="_blank" rel="noopener">项目仓库</a>
+    </nav>
+  </header>
+
+  <main class="lab-page">
+    <div class="lab-title-row">
+      <div>
+        <p class="eyebrow">回归算法</p>
+        <h1>线性回归与梯度下降可视化</h1>
+      </div>
+      <a class="back-link" href="index.html">返回首页</a>
+    </div>
+
+    <section class="lab-layout">
+      <aside class="panel control-panel">
+        <h2>参数控制</h2>
+        <label class="range-row" for="learningRate">
+          <span>学习率</span>
+          <strong id="learningRateText">0.05</strong>
+        </label>
+        <input id="learningRate" type="range" min="0.005" max="0.1" step="0.005" value="0.05">
+        <p class="hint">学习率越大，每一步调整越明显；过大可能不稳定。</p>
+
+        <label class="range-row" for="noiseLevel">
+          <span>数据噪声</span>
+          <strong id="noiseLevelText">0.10</strong>
+        </label>
+        <input id="noiseLevel" type="range" min="0.02" max="0.22" step="0.02" value="0.10">
+        <p class="hint">噪声越大，散点越分散，拟合难度越高。</p>
+
+        <label class="option-row" for="showErrorLines">
+          <input id="showErrorLines" type="checkbox" checked>
+          <span>显示预测误差线</span>
+        </label>
+
+        <div class="button-stack">
+          <button id="generateRegressionDataBtn" type="button">生成数据</button>
+          <button id="trainStepBtn" type="button">训练一步</button>
+          <button id="trainManyBtn" type="button">训练 50 步</button>
+          <button id="autoTrainBtn" type="button">自动训练</button>
+          <button id="resetModelBtn" class="ghost-button" type="button">重置模型</button>
+        </div>
+      </aside>
+
+      <section class="canvas-panel">
+        <canvas id="regressionCanvas" class="lab-canvas" width="760" height="520" aria-label="线性回归画布"></canvas>
+      </section>
+
+      <aside class="panel explanation-panel">
+        <h2>算法解释</h2>
+        <p id="regressionExplanationText">点击“生成数据”开始实验。</p>
+        <div class="result-card">
+          <p>w：<strong id="wText">0.000</strong></p>
+          <p>b：<strong id="bText">0.000</strong></p>
+          <p>loss：<strong id="lossText">0.0000</strong></p>
+          <p>当前训练轮数：<strong id="epochText">0</strong></p>
+        </div>
+        <div class="step-list">
+          <h3>当前模型</h3>
+          <p id="formulaText">y = 0.000x + 0.000</p>
+          <h3>Loss 变化曲线</h3>
+          <canvas id="lossCanvas" class="mini-canvas" width="260" height="140" aria-label="Loss 变化曲线"></canvas>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/regression.js"></script>
+</body>
+</html>

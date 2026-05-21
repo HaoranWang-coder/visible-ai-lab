@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>感知机二分类可视化</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">可见的智能</a>
+    <nav class="top-nav" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="kmeans.html">K-Means</a>
+      <a href="dbscan.html">DBSCAN</a>
+      <a href="knn.html">KNN</a>
+      <a href="bayes.html">朴素贝叶斯</a>
+      <a href="perceptron.html" class="active">感知机</a>
+      <a href="regression.html">线性回归</a>
+      <a href="https://github.com/HaoranWang-coder/visible-ai-lab" target="_blank" rel="noopener">项目仓库</a>
+    </nav>
+  </header>
+
+  <main class="lab-page">
+    <div class="lab-title-row">
+      <div>
+        <p class="eyebrow">线性分类算法</p>
+        <h1>感知机二分类可视化</h1>
+      </div>
+      <a class="back-link" href="index.html">返回首页</a>
+    </div>
+
+    <section class="lab-layout">
+      <aside class="panel control-panel">
+        <h2>参数控制</h2>
+        <label class="range-row" for="perceptronRate">
+          <span>学习率</span>
+          <strong id="perceptronRateText">0.12</strong>
+        </label>
+        <input id="perceptronRate" type="range" min="0.02" max="0.30" step="0.02" value="0.12">
+
+        <label class="range-row" for="perceptronPointCount">
+          <span>样本数量</span>
+          <strong id="perceptronPointCountText">70</strong>
+        </label>
+        <input id="perceptronPointCount" type="range" min="40" max="140" step="10" value="70">
+
+        <label class="range-row" for="classGap">
+          <span>类别间隔</span>
+          <strong id="classGapText">0.18</strong>
+        </label>
+        <input id="classGap" type="range" min="0.05" max="0.30" step="0.01" value="0.18">
+
+        <div class="button-stack">
+          <button id="perceptronGenerateBtn" type="button">生成样本</button>
+          <button id="perceptronTrainStepBtn" type="button">训练一步</button>
+          <button id="perceptronTrainEpochBtn" type="button">训练一轮</button>
+          <button id="perceptronAutoBtn" type="button">自动训练</button>
+          <button id="perceptronResetBtn" class="ghost-button" type="button">重置模型</button>
+        </div>
+      </aside>
+
+      <section class="canvas-panel">
+        <canvas id="perceptronCanvas" class="lab-canvas" width="760" height="520" aria-label="感知机分类画布"></canvas>
+      </section>
+
+      <aside class="panel explanation-panel">
+        <h2>算法解释</h2>
+        <p id="perceptronExplanationText">点击“生成样本”开始实验。</p>
+        <div class="result-card">
+          <p>w1：<strong id="w1Text">0.000</strong></p>
+          <p>w2：<strong id="w2Text">0.000</strong></p>
+          <p>b：<strong id="perceptronBText">0.000</strong></p>
+          <p>训练轮数：<strong id="perceptronEpochText">0</strong></p>
+          <p>分类准确率：<strong id="accuracyText">0%</strong></p>
+          <p>错误样本：<strong id="mistakeText">0</strong></p>
+        </div>
+        <div class="step-list">
+          <h3>观察重点</h3>
+          <ol>
+            <li>红蓝点代表两类样本。</li>
+            <li>黑色直线是当前决策边界。</li>
+            <li>被描黑的点表示当前分类错误。</li>
+          </ol>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/perceptron.js"></script>
+</body>
+</html>

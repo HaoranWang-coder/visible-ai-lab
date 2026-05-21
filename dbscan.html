@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DBSCAN 密度聚类可视化</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">可见的智能</a>
+    <nav class="top-nav" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="kmeans.html">K-Means</a>
+      <a href="dbscan.html" class="active">DBSCAN</a>
+      <a href="knn.html">KNN</a>
+      <a href="bayes.html">朴素贝叶斯</a>
+      <a href="perceptron.html">感知机</a>
+      <a href="regression.html">线性回归</a>
+      <a href="https://github.com/HaoranWang-coder/visible-ai-lab" target="_blank" rel="noopener">项目仓库</a>
+    </nav>
+  </header>
+
+  <main class="lab-page">
+    <div class="lab-title-row">
+      <div>
+        <p class="eyebrow">密度聚类算法</p>
+        <h1>DBSCAN 密度聚类可视化</h1>
+      </div>
+      <a class="back-link" href="index.html">返回首页</a>
+    </div>
+
+    <section class="lab-layout">
+      <aside class="panel control-panel">
+        <h2>参数控制</h2>
+        <label class="range-row" for="epsValue">
+          <span>邻域半径 eps</span>
+          <strong id="epsValueText">46</strong>
+        </label>
+        <input id="epsValue" type="range" min="24" max="90" step="2" value="46">
+        <p class="hint">eps 表示判断邻居时允许的最大距离。</p>
+
+        <label class="range-row" for="minPtsValue">
+          <span>最少邻居 minPts</span>
+          <strong id="minPtsValueText">5</strong>
+        </label>
+        <input id="minPtsValue" type="range" min="3" max="9" step="1" value="5">
+
+        <label class="range-row" for="dbscanPointCount">
+          <span>数据点数量</span>
+          <strong id="dbscanPointCountText">110</strong>
+        </label>
+        <input id="dbscanPointCount" type="range" min="60" max="180" step="10" value="110">
+
+        <div class="button-stack">
+          <button id="dbscanGenerateBtn" type="button">生成数据</button>
+          <button id="dbscanStepBtn" type="button">下一步扫描</button>
+          <button id="dbscanAutoBtn" type="button">自动聚类</button>
+          <button id="dbscanResetBtn" class="ghost-button" type="button">重置</button>
+        </div>
+      </aside>
+
+      <section class="canvas-panel">
+        <canvas id="dbscanCanvas" class="lab-canvas" width="760" height="520" aria-label="DBSCAN 密度聚类画布"></canvas>
+      </section>
+
+      <aside class="panel explanation-panel">
+        <h2>算法解释</h2>
+        <p id="dbscanExplanationText">点击“生成数据”开始实验。</p>
+        <div class="result-card">
+          <p>已发现簇数：<strong id="dbscanClusterText">0</strong></p>
+          <p>核心点：<strong id="corePointText">0</strong></p>
+          <p>边界点：<strong id="borderPointText">0</strong></p>
+          <p>噪声点：<strong id="noisePointText">0</strong></p>
+        </div>
+        <div class="step-list">
+          <h3>观察重点</h3>
+          <ol>
+            <li>核心点：eps 范围内邻居足够多。</li>
+            <li>边界点：被核心点吸收到簇中。</li>
+            <li>噪声点：邻居太少，暂时不属于任何簇。</li>
+          </ol>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/dbscan.js"></script>
+</body>
+</html>

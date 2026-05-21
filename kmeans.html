@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K-Means 聚类可视化</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">可见的智能</a>
+    <nav class="top-nav" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a class="active" href="kmeans.html">K-Means</a>
+      <a href="dbscan.html">DBSCAN</a>
+      <a href="knn.html">KNN</a>
+      <a href="bayes.html">朴素贝叶斯</a>
+      <a href="perceptron.html">感知机</a>
+      <a href="regression.html">线性回归</a>
+      <a href="https://github.com/HaoranWang-coder/visible-ai-lab" target="_blank" rel="noopener">项目仓库</a>
+    </nav>
+  </header>
+
+  <main class="lab-page">
+    <div class="lab-title-row">
+      <div>
+        <p class="eyebrow">聚类算法</p>
+        <h1>K-Means 聚类可视化</h1>
+      </div>
+      <a class="back-link" href="index.html">返回首页</a>
+    </div>
+
+    <section class="lab-layout">
+      <aside class="panel control-panel">
+        <h2>参数控制</h2>
+        <label class="range-row" for="kValue">
+          <span>K 值</span>
+          <strong id="kValueText">3</strong>
+        </label>
+        <input id="kValue" type="range" min="2" max="5" step="1" value="3">
+        <p class="hint">K 表示希望分成多少个簇。</p>
+
+        <label class="range-row" for="pointCount">
+          <span>数据点数量</span>
+          <strong id="pointCountText">90</strong>
+        </label>
+        <input id="pointCount" type="range" min="40" max="160" step="10" value="90">
+        <p class="hint">数据点越多，聚类变化越明显。</p>
+
+        <label class="option-row" for="showKMeansLinks">
+          <input id="showKMeansLinks" type="checkbox" checked>
+          <span>显示点到中心的连线</span>
+        </label>
+
+        <div class="button-stack">
+          <button id="generateDataBtn" type="button">生成数据</button>
+          <button id="initCentersBtn" type="button">初始化中心</button>
+          <button id="stepBtn" type="button">下一步迭代</button>
+          <button id="autoRunBtn" type="button">自动运行</button>
+          <button id="resetBtn" class="ghost-button" type="button">重置</button>
+        </div>
+
+        <div class="metric-box">
+          <span>当前迭代次数</span>
+          <strong id="iterationText">0</strong>
+        </div>
+      </aside>
+
+      <section class="canvas-panel">
+        <canvas id="kmeansCanvas" class="lab-canvas" width="760" height="520" aria-label="K-Means 聚类画布"></canvas>
+      </section>
+
+      <aside class="panel explanation-panel">
+        <h2>算法解释</h2>
+        <p id="explanationText">点击“生成数据”开始实验。</p>
+        <div class="step-list">
+          <h3>观察重点</h3>
+          <ol>
+            <li>先随机生成散点。</li>
+            <li>再随机放置 K 个聚类中心。</li>
+            <li>每个点会被分配给最近的中心。</li>
+            <li>每个中心移动到本簇点的平均位置。</li>
+          </ol>
+        </div>
+        <div class="result-card">
+          <p>簇内平方误差：<strong id="sseText">0.0</strong></p>
+          <p>每簇点数：<strong id="clusterCountText">等待运行</strong></p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/kmeans.js"></script>
+</body>
+</html>

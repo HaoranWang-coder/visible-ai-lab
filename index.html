@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>可见的智能：机器学习算法可视化实验室</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">可见的智能</a>
+    <nav class="top-nav" aria-label="主导航">
+      <a href="kmeans.html">K-Means</a>
+      <a href="dbscan.html">DBSCAN</a>
+      <a href="knn.html">KNN</a>
+      <a href="bayes.html">朴素贝叶斯</a>
+      <a href="perceptron.html">感知机</a>
+      <a href="regression.html">线性回归</a>
+      <a href="https://github.com/HaoranWang-coder/visible-ai-lab" target="_blank" rel="noopener">项目仓库</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">机器学习算法可视化实验室</p>
+        <h1>可见的智能</h1>
+        <p class="hero-subtitle">让机器学习算法从黑箱变成看得见的过程</p>
+        <p class="author-line">作者：HaoranWang</p>
+        <p class="hero-intro">
+          这个项目用浏览器中的 Canvas 动画和交互控件，把聚类、分类和拟合过程直观展示出来。
+          你可以调节参数、点击运行、观察模型如何一步步做出判断。
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button" href="kmeans.html">进入实验室</a>
+          <a class="secondary-button" href="#experiments">查看模块</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="算法可视化示意图">
+        <canvas id="homeCanvas" width="560" height="360"></canvas>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-heading">
+        <p class="eyebrow">项目简介</p>
+        <h2>把抽象公式变成可以观察的实验</h2>
+      </div>
+      <p class="section-text">
+        机器学习常常被看成难以理解的黑箱。本项目选取六个适合入门展示的经典算法，
+        用纯 HTML、CSS、JavaScript 和 Canvas 实现可交互实验：K-Means 展示“点如何自动分组”，
+        DBSCAN 展示“密度如何发现任意形状簇”，KNN 和朴素贝叶斯展示不同分类思路，
+        感知机展示线性分类边界如何学习，线性回归展示“模型如何通过梯度下降逐渐拟合数据”。
+      </p>
+      <div class="feature-strip">
+        <div>
+          <strong>动态指标</strong>
+          <span>实时显示误差、投票、簇大小和训练轮数。</span>
+        </div>
+        <div>
+          <strong>可调实验</strong>
+          <span>支持调整样本数量、K 值、学习率和噪声。</span>
+        </div>
+        <div>
+          <strong>过程可见</strong>
+          <span>展示连线、轨迹、决策边界和 loss 曲线。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experiments">
+      <div class="section-heading">
+        <p class="eyebrow">实验入口</p>
+        <h2>选择一个算法开始观察</h2>
+      </div>
+
+      <div class="experiment-grid">
+        <article class="experiment-card">
+          <div class="card-mark mark-green">K</div>
+          <h3>K-Means 聚类实验室</h3>
+          <p>
+            观察散点如何根据距离被分配到不同簇中，聚类中心又如何不断移动到每组点的平均位置。
+          </p>
+          <a class="card-button" href="kmeans.html">开始实验</a>
+        </article>
+
+        <article class="experiment-card">
+          <div class="card-mark mark-red">N</div>
+          <h3>KNN 分类实验室</h3>
+          <p>
+            点击画布生成待分类点，查看最近的 K 个邻居如何通过多数投票决定它属于哪一类。
+          </p>
+          <a class="card-button" href="knn.html">开始实验</a>
+        </article>
+
+        <article class="experiment-card">
+          <div class="card-mark mark-purple">D</div>
+          <h3>DBSCAN 密度聚类实验室</h3>
+          <p>
+            调节 eps 和 minPts，观察核心点、边界点和噪声点如何根据密度关系形成聚类。
+          </p>
+          <a class="card-button" href="dbscan.html">开始实验</a>
+        </article>
+
+        <article class="experiment-card">
+          <div class="card-mark mark-yellow">B</div>
+          <h3>朴素贝叶斯分类实验室</h3>
+          <p>
+            通过概率分布估计样本属于不同类别的可能性，观察后验概率如何影响分类结果。
+          </p>
+          <a class="card-button" href="bayes.html">开始实验</a>
+        </article>
+
+        <article class="experiment-card">
+          <div class="card-mark mark-dark">P</div>
+          <h3>感知机二分类实验室</h3>
+          <p>
+            观察一条决策直线如何根据错误样本不断调整，逐步把红蓝两类样本分开。
+          </p>
+          <a class="card-button" href="perceptron.html">开始实验</a>
+        </article>
+
+        <article class="experiment-card">
+          <div class="card-mark mark-blue">R</div>
+          <h3>线性回归实验室</h3>
+          <p>
+            生成带噪声的线性数据，观察拟合直线如何通过梯度下降逐步降低误差。
+          </p>
+          <a class="card-button" href="regression.html">开始实验</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    作者：HaoranWang。本项目基于 HTML、CSS、JavaScript 和 Canvas 实现，可部署于 GitHub Pages。
+    <a class="footer-link" href="https://github.com/HaoranWang-coder/visible-ai-lab" target="_blank" rel="noopener">查看 GitHub 仓库</a>
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      if (!window.LabUtils) {
+        return;
+      }
+
+      var canvasPack = LabUtils.getCanvasAndContext('homeCanvas');
+      var ctx = canvasPack.ctx;
+      var width = canvasPack.width;
+      var height = canvasPack.height;
+      var points = [];
+      var colors = ['#ef4444', '#2563eb', '#14b8a6'];
+
+      for (var i = 0; i < 34; i++) {
+        var group = i % colors.length;
+        var baseX = [150, 295, 410][group];
+        var baseY = [230, 120, 235][group];
+        points.push({
+          x: baseX + LabUtils.randomBetween(-55, 55),
+          y: baseY + LabUtils.randomBetween(-48, 48),
+          color: colors[group],
+          radius: LabUtils.randomBetween(4, 7)
+        });
+      }
+
+      function drawHomeCanvas() {
+        canvasPack = LabUtils.getCanvasAndContext('homeCanvas');
+        ctx = canvasPack.ctx;
+        width = canvasPack.width;
+        height = canvasPack.height;
+        LabUtils.clearCanvas(ctx, canvasPack.canvas, '#ffffff');
+
+        var centers = [
+          { x: width * 0.27, y: height * 0.64, color: colors[0] },
+          { x: width * 0.53, y: height * 0.35, color: colors[1] },
+          { x: width * 0.75, y: height * 0.65, color: colors[2] }
+        ];
+
+        for (var c = 0; c < centers.length; c++) {
+          for (var p = 0; p < points.length; p++) {
+            if (points[p].color === centers[c].color) {
+              LabUtils.drawLine(ctx, points[p].x, points[p].y, centers[c].x, centers[c].y, 'rgba(100, 116, 139, 0.18)', 1);
+            }
+          }
+        }
+
+        for (var j = 0; j < points.length; j++) {
+          LabUtils.drawCircle(ctx, points[j].x, points[j].y, points[j].radius, points[j].color, '#ffffff', 2);
+        }
+
+        for (var k = 0; k < centers.length; k++) {
+          LabUtils.drawCircle(ctx, centers[k].x, centers[k].y, 13, centers[k].color, '#111827', 3);
+        }
+
+        LabUtils.drawLine(ctx, width * 0.1, height * 0.82, width * 0.9, height * 0.18, '#0f172a', 3);
+      }
+
+      drawHomeCanvas();
+      window.addEventListener('resize', drawHomeCanvas);
+    });
+  </script>
+</body>
+</html>
